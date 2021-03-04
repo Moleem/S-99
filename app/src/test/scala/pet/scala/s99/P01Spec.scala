@@ -9,7 +9,7 @@ class P01Spec extends PxxSpec {
     elems match {
       case Nil => throw new IllegalArgumentException("Input for method 'last' cannot be empty")
       case only :: Nil => only
-      case head :: tail => last(tail)
+      case _ :: tail => last(tail)
     }
 
   behavior of "'last' method"
