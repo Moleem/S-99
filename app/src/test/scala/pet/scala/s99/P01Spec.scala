@@ -7,9 +7,9 @@ class P01Spec extends PxxSpec {
   @tailrec
   private def last[T](elems: Seq[T]): T =
     elems match {
-      case Nil => throw new IllegalArgumentException("Input for method 'last' cannot be empty")
-      case only :: Nil => only
+      case onlyElement :: Nil => onlyElement
       case _ :: tail => last(tail)
+      case _ => throw new NoSuchElementException
     }
 
   behavior of "'last' method"
@@ -22,11 +22,11 @@ class P01Spec extends PxxSpec {
   }
 
   it should "throw exception for an empty list" in {
-    an[IllegalArgumentException] should be thrownBy last(List.empty)
+    an[NoSuchElementException] should be thrownBy last(List.empty)
   }
 
   it should "find the last element of a huge list" in {
-    last(List.fill(100000)(0) :+ 1) shouldBe 1
+    last(List.fill(1000000)(0) :+ 1) shouldBe 1
   }
 
 }
