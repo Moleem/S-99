@@ -3,19 +3,15 @@ package pet.scala.s99
 import scala.annotation.tailrec
 
 class P03Spec extends PxxSpec {
- 
-  private def nth[T](n: Int, elems: List[T]): T = {    
-    @tailrec
-    def nthRecursive[T](n: Int, elems: List[T]): T =
-      (n, elems) match {
-        case (0, head :: _) => head
-        case (index, _ :: tail) => nthRecursive(index-1, tail)
-      }
-    
-    if (n < 0) throw new IllegalArgumentException
-    if (n >= elems.size) throw new NoSuchElementException
-    nthRecursive(n, elems)
-  }
+  
+  @tailrec
+  private def nth[T](n: Int, elems: List[T]): T =     
+    (n, elems) match {
+      case (index, _) if index < 0 => throw new IllegalArgumentException
+      case (_, Nil) => throw new NoSuchElementException
+      case (0, head :: _) => head
+      case (index, _ :: tail) => nth(index-1, tail)
+    }
 
   behavior of "'nth' method"
 
