@@ -9,7 +9,7 @@ class P04Spec extends PxxSpec {
     def lengthRecursive[T](elems: List[T], accumulator: Int = 0): Int =
       elems match {
         case Nil => accumulator
-        case head :: tail => lengthRecursive(tail, accumulator+1)
+        case _ :: tail => lengthRecursive(tail, accumulator+1)
       }
 
     lengthRecursive(elems)

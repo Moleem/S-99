@@ -9,7 +9,7 @@ class P05Spec extends PxxSpec {
     def reverseRecursive[T](elems: List[T], accumulator: List[T] = Nil): List[T] =
       elems match {
         case Nil => accumulator
-        case head :: tail => reverseRecursive(tail, head +: accumulator)
+        case head :: tail => reverseRecursive(tail, head :: accumulator)
       }
 
     reverseRecursive(elems)
