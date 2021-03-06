@@ -26,6 +26,6 @@ class P05Spec extends PxxSpec {
   }
 
   it should "reverse a huge list" in {
-    reverse((1 to 10).toList) shouldBe (10 to 1 by -1).toList
+    reverse((1 to 1000000).toList) shouldBe (1000000 to 1 by -1).toList
   }
 }
