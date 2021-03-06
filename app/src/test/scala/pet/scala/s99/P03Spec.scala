@@ -4,9 +4,9 @@ import scala.annotation.tailrec
 
 class P03Spec extends PxxSpec {
  
-  private def nth[T](n: Int, elems: Seq[T]): T = {    
+  private def nth[T](n: Int, elems: List[T]): T = {    
     @tailrec
-    def nthRecursive[T](n: Int, elems: Seq[T]): T =
+    def nthRecursive[T](n: Int, elems: List[T]): T =
       (n, elems) match {
         case (0, head :: _) => head
         case (index, _ :: tail) => nthRecursive(index-1, tail)

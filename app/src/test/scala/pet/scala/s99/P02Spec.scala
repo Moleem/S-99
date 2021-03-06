@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 class P02Spec extends PxxSpec {
   
   @tailrec
-  private def penultimate[T](elems: Seq[T]): T =
+  private def penultimate[T](elems: List[T]): T =
     elems match {
       case lastButOne :: _ :: Nil => lastButOne 
       case _ :: tail => penultimate(tail)

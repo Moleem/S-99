@@ -4,9 +4,9 @@ import scala.annotation.tailrec
 
 class P05Spec extends PxxSpec {
 
-  private def reverse[T](elems: Seq[T]): Seq[T] = {
+  private def reverse[T](elems: List[T]): List[T] = {
     @tailrec
-    def reverseRecursive[T](elems: Seq[T], accumulator: Seq[T] = Nil): Seq[T] =
+    def reverseRecursive[T](elems: List[T], accumulator: List[T] = Nil): List[T] =
       elems match {
         case Nil => accumulator
         case head :: tail => reverseRecursive(tail, head +: accumulator)

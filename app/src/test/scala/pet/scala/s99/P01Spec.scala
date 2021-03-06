@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 class P01Spec extends PxxSpec {
 
   @tailrec
-  private def last[T](elems: Seq[T]): T =
+  private def last[T](elems: List[T]): T =
     elems match {
       case onlyElement :: Nil => onlyElement
       case _ :: tail => last(tail)

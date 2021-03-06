@@ -4,9 +4,9 @@ import scala.annotation.tailrec
 
 class P04Spec extends PxxSpec {
 
-  private def length[T](elems: Seq[T]): Int = {
+  private def length[T](elems: List[T]): Int = {
     @tailrec
-    def lengthRecursive[T](elems: Seq[T], accumulator: Int = 0): Int =
+    def lengthRecursive[T](elems: List[T], accumulator: Int = 0): Int =
       elems match {
         case Nil => accumulator
         case head :: tail => lengthRecursive(tail, accumulator+1)
