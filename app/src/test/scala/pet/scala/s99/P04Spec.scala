@@ -1,7 +1,5 @@
 package pet.scala.s99
 
-import scala.annotation.tailrec
-
 class P04Spec extends PxxSpec {
 
   private def length[T](elems: List[T]): Int =
