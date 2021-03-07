@@ -4,16 +4,8 @@ import scala.annotation.tailrec
 
 class P04Spec extends PxxSpec {
 
-  private def length[T](elems: List[T]): Int = {
-    @tailrec
-    def lengthRecursive[T](elems: List[T], accumulator: Int = 0): Int =
-      elems match {
-        case Nil => accumulator
-        case _ :: tail => lengthRecursive(tail, accumulator+1)
-      }
-
-    lengthRecursive(elems)
-  }
+  private def length[T](elems: List[T]): Int =
+    elems.foldLeft(0) { (accumulator, _) => accumulator + 1 }
 
   behavior of "'length' method"
 
