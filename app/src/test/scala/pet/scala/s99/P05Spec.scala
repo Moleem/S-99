@@ -4,17 +4,9 @@ import scala.annotation.tailrec
 
 class P05Spec extends PxxSpec {
 
-  private def reverse[T](elems: List[T]): List[T] = {
-    @tailrec
-    def reverseRecursive[T](elems: List[T], accumulator: List[T] = Nil): List[T] =
-      elems match {
-        case Nil => accumulator
-        case head :: tail => reverseRecursive(tail, head :: accumulator)
-      }
-
-    reverseRecursive(elems)
-  }
-
+  private def reverse[T](elems: List[T]): List[T] = 
+    elems.foldLeft(List[T]()) { (accumulator, elem) => elem :: accumulator }
+  
   behavior of "'reverse' method"
 
   it should "reverse a list" in {
