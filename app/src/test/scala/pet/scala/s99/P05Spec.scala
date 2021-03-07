@@ -1,7 +1,5 @@
 package pet.scala.s99
 
-import scala.annotation.tailrec
-
 class P05Spec extends PxxSpec {
 
   private def reverse[T](elems: List[T]): List[T] = 
