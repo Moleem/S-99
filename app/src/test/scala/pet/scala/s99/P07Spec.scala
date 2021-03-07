@@ -6,8 +6,8 @@ class P07Spec extends PxxSpec {
 
   private def flatten(elems: List[Any]): List[Any] = {
     @tailrec
-    def flattenRecursive(es: List[Any], accumulator: List[Any] = Nil): List[Any] =
-      es match {
+    def flattenRecursive(elems: List[Any], accumulator: List[Any] = Nil): List[Any] =
+      elems match {
         case Nil => accumulator
         case (head: List[_]) :: Nil => flattenRecursive(head, accumulator)
         case (head: List[_]) :: tail => flattenRecursive(head ::: tail, accumulator)
