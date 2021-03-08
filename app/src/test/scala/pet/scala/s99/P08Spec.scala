@@ -10,7 +10,7 @@ class P08Spec extends PxxSpec {
 
   behavior of "'compress' method"
 
-  it should "not change lists wihtout duplicates" in {
+  it should "not change lists without duplicates" in {
     compress(List.empty) shouldBe List.empty
     compress(List(1)) shouldBe List(1)
     compress(List(1, 2)) shouldBe List(1, 2)
