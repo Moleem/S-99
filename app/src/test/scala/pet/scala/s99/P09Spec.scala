@@ -4,7 +4,8 @@ class P09Spec extends PxxSpec {
 
   private def pack[T](elems: List[T]): List[List[T]] = 
     elems.foldRight(List[List[T]]()) { (elem, accumulator) =>
-      if (accumulator.headOption.exists(_.contains(elem))) (elem :: accumulator.head) :: accumulator.tail
+      if (accumulator.headOption.exists(_.contains(elem)))
+        (elem :: accumulator.head) :: accumulator.tail
       else List(elem) :: accumulator
     }
 
