@@ -52,7 +52,11 @@ class P07Spec extends PxxSpec {
     flatten(List.fill(500)(1)) shouldBe List.fill(500)(1)
     flatten(List.fill(500)(List(1))) shouldBe List.fill(500)(1)
     flatten(List(List.fill(500)(1))) shouldBe List.fill(500)(1)
-    val deepList: List[Any] = (1 until 500).foldLeft(List(1).asInstanceOf[List[Any]])((li, _) => List(li, List(1)))
+    val initialDeepList: List[Any] = List(1)
+    val deepList: List[Any] = 
+      (1 until 500).foldLeft(initialDeepList) { (li, _) => 
+        List(li, List(1))
+      }
     flatten(deepList) shouldBe List.fill(500)(1)
   }
 }

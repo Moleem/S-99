@@ -26,6 +26,7 @@ class P08Spec extends PxxSpec {
 
   it should "deduplicate huge lists" in {
     compress(List.fill(1000000)(1)) shouldBe List(1)
-    compress(List.fill(500000)(List(1, 1, 2)).flatten) shouldBe List.fill(500000)(List(1, 2)).flatten
+    compress(List.fill(500000)(List(1, 1, 2)).flatten) shouldBe
+      List.fill(500000)(List(1, 2)).flatten
   }
 }

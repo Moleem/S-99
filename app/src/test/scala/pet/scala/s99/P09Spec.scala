@@ -30,6 +30,7 @@ class P09Spec extends PxxSpec {
 
   it should "pack huge lists" in {
     pack(List.fill(1000000)(1)) shouldBe List(List.fill(1000000)(1))
-    pack(List.fill(500000)(List(1, 1, 2)).flatten) shouldBe List.fill(500000)(List(List(1, 1), List(2))).flatten
+    pack(List.fill(500000)(List(1, 1, 2)).flatten) shouldBe 
+      List.fill(500000)(List(List(1, 1), List(2))).flatten
   }
 }
