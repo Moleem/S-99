@@ -3,14 +3,14 @@ package pet.scala.s99
 class P11Spec extends PxxSpec {
 
   private def encodeModified[T](elems: List[T]): List[Any] = 
-    elems.foldRight(List[Any]()) {
-      case (currentElem, (elem) :: tail) if currentElem == elem =>
-        (2, elem) :: tail
-      case (currentElem, (elemCounter: Int, elem) :: tail) 
-      if currentElem == elem =>
+    elems.foldRight(List[(Int, T)]()) { 
+      case (currentElem, (elemCounter, elem) :: tail) if currentElem == elem =>
         (elemCounter + 1, elem) :: tail
       case (currentElem, accumulator) =>
-        currentElem :: accumulator
+        (1, currentElem) :: accumulator
+    } map {
+      case (1, elem) => elem
+      case aggregate => aggregate
     }
 
   behavior of "'encodeModified' method"
@@ -31,6 +31,10 @@ class P11Spec extends PxxSpec {
     encodeModified(List(1, 2, 2, 3)) shouldBe List(1, (2, 2), 3)
     encodeModified(List(1, 1, 2, 2)) shouldBe List((2, 1), (2, 2))
     encodeModified(List(1, 1, 2, 1)) shouldBe List((2, 1), 2, 1)
+  }
+
+  it should "not confuse single and repeated elemenst" in {
+    encodeModified(List((2, 1), 1, 1)) shouldBe List((2, 1), (2, 1))
   }
 
   it should "encode huge lists" in {
