@@ -35,6 +35,7 @@ class P11Spec extends PxxSpec {
 
   it should "not confuse single and repeated elemenst" in {
     encodeModified(List((2, 1), 1, 1)) shouldBe List((2, 1), (2, 1))
+    encodeModified(List(1, 1, (2, 1))) shouldBe List((2, 1), (2, 1))
   }
 
   it should "encode huge lists" in {
