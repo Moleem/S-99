@@ -25,7 +25,7 @@ class P11Spec extends PxxSpec {
     encodeModified(List(1, 2, 3)) shouldBe List(1, 2, 3)
   }
   
-  it should "encode consecutive repeated elements into number-element tuples" +
+  it should "encode consecutive repeated elements into number-element tuples " +
     "but leave single elements alone" in {
     encodeModified(List(1, 1)) shouldBe List((2, 1))
     encodeModified(List(1, 2, 2, 3)) shouldBe List(1, (2, 2), 3)
