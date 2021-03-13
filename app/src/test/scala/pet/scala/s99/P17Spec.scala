@@ -1,15 +1,26 @@
 package pet.scala.s99
 
+import scala.annotation.tailrec
+
 class P17Spec extends PxxSpec {
 
   private def split[T](n: Int, elems: List[T]): (List[T], List[T]) = {
+    @tailrec
+    def splitRecursive[T](
+      elems: List[T], counter: Int, acc: List[T] = Nil): (List[T], List[T]) =
+      (elems, counter) match {
+        case (Nil, _) => 
+          (acc.reverse, Nil)
+        case (elems, 0) => 
+          (acc.reverse, elems)
+        case (headElem :: tail, counter) =>
+          splitRecursive(tail, counter - 1, headElem :: acc) 
+      }
+
     if (n < 0) throw new IllegalArgumentException
-    elems.zipWithIndex.foldRight((List[T](), List[T]())) {
-      case ((elem, index), (left, right)) =>
-        if (index < n) (elem :: left, right)
-        else (left, elem :: right)
-    }
+    else splitRecursive(elems, n)
   }
+
 
   behavior of "'split' method"
 
