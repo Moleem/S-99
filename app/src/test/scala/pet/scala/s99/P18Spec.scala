@@ -1,24 +1,23 @@
 package pet.scala.s99
 
+import scala.annotation.tailrec
+
 class P18Spec extends PxxSpec {
 
   private def slice[T](start: Int, end: Int, elems: List[T]): List[T] = {
+    @tailrec
     def sliceRecursive[T](elems: List[T], ctr: Int=0, acc: List[T]=Nil): List[T] =
-      (elems, ctr) match {
-        case (Nil, _) => acc.reverse
-        case (_, ctr) if ctr >= end => acc.reverse
-        case (head :: tail, ctr) =>
-          if (ctr >= start && ctr < end)
-            sliceRecursive(tail, ctr + 1, head :: acc)
-          else
-            sliceRecursive(tail, ctr + 1, acc)
-      }
+      if (elems.isEmpty || ctr >= end) acc.reverse
+      else sliceRecursive(
+        elems.tail, ctr + 1,
+        if (ctr >= start && ctr < end) elems.head :: acc
+        else acc
+      )
 
     if (start < 0 || end < 0 || start > end) 
       throw new IllegalArgumentException
     else
       sliceRecursive(elems)
-    
   }
   
   behavior of "'slice' method"
