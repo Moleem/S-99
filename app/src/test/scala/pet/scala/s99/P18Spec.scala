@@ -5,7 +5,7 @@ class P18Spec extends PxxSpec {
   private def slice[T](start: Int, end: Int, elems: List[T]): List[T] =
     if (start < 0 || end < 0 || start > end) 
       throw new IllegalArgumentException
-    else elems.drop(start).take(end-start)    
+    else elems.slice(start, end)
 
   behavior of "'slice' method"
 
