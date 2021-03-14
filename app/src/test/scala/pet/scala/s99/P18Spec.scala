@@ -2,11 +2,25 @@ package pet.scala.s99
 
 class P18Spec extends PxxSpec {
 
-  private def slice[T](start: Int, end: Int, elems: List[T]): List[T] =
+  private def slice[T](start: Int, end: Int, elems: List[T]): List[T] = {
+    def sliceRecursive[T](elems: List[T], ctr: Int=0, acc: List[T]=Nil): List[T] =
+      (elems, ctr) match {
+        case (Nil, _) => acc.reverse
+        case (_, ctr) if ctr >= end => acc.reverse
+        case (head :: tail, ctr) =>
+          if (ctr >= start && ctr < end)
+            sliceRecursive(tail, ctr + 1, head :: acc)
+          else
+            sliceRecursive(tail, ctr + 1, acc)
+      }
+
     if (start < 0 || end < 0 || start > end) 
       throw new IllegalArgumentException
-    else elems.slice(start, end)
-
+    else
+      sliceRecursive(elems)
+    
+  }
+  
   behavior of "'slice' method"
 
   it should "not change an empty list" in {
@@ -47,8 +61,8 @@ class P18Spec extends PxxSpec {
     an[IllegalArgumentException] should be thrownBy slice (3, 0, List(1, 2))
   }
 
-  // it should "slice huge lists" in {
-  //   slice(0, 3, List.fill(1000000)(1)) shouldBe List(1, 1, 1)
-  //   slice(999997, 1000000, List.fill(1000000)(1)) shouldBe List(1, 1, 1)
-  // }
+  it should "slice huge lists" in {
+    slice(0, 3, List.fill(1000000)(1)) shouldBe List(1, 1, 1)
+    slice(999997, 1000000, List.fill(1000000)(1)) shouldBe List(1, 1, 1)
+  }
 }
