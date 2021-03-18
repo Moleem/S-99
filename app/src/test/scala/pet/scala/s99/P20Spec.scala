@@ -2,9 +2,8 @@ package pet.scala.s99
 
 import scala.annotation.tailrec
 
-class P20Spec extends PxxSpec {
-
-  private def removeAt[T](n: Int, elems: List[T]): (List[T], T) = {
+object P20Spec {
+  def removeAt[T](n: Int, elems: List[T]): (List[T], T) = {
     @tailrec
     def removeAtRecursive[T](elems: List[T], ctr: Int=0, acc: List[T]=Nil): (List[T], T) =
       elems match {
@@ -17,6 +16,10 @@ class P20Spec extends PxxSpec {
     if (n < 0) throw new IllegalArgumentException
     removeAtRecursive(elems)
   }
+}
+
+class P20Spec extends PxxSpec {
+  import P20Spec.removeAt
 
   behavior of "'removeAt' method"
 
