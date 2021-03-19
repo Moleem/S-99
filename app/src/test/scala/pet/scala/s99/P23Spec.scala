@@ -4,10 +4,9 @@ import P20Spec.removeAt
 import scala.util.Random
 import scala.annotation.tailrec
 
-class P23Spec extends PxxSpec {
-
+object P23Spec {
   private val random = Random
-  private def randomSelect[T](n: Int, elems: List[T]): List[T] = {
+  def randomSelect[T](n: Int, elems: List[T]): List[T] = {
     @tailrec
     def randomSelectRecursive(n: Int, elemSize: Int, elems: List[T], acc: List[T]=Nil): List[T] = {
       (n, elems) match {
@@ -24,12 +23,17 @@ class P23Spec extends PxxSpec {
     else if (n == elemSize) elems
     else randomSelectRecursive(n, elemSize, elems)
   }
+}
+
+class P23Spec extends PxxSpec {
+  import P23Spec.randomSelect  
 
   behavior of "'randomSelect' method"
 
   private def verifyRandomSelection[T](n: Int, elems: List[T]): Unit = {
     val randomElems = randomSelect(n, elems)
     randomElems.size shouldBe n
+    randomElems.toSet.size shouldBe n
     randomElems.foreach(elem => elems should contain(elem))
   }
 
@@ -72,6 +76,9 @@ class P23Spec extends PxxSpec {
     randomSelect(1, List.fill(1000000)(1))
     randomSelect(1000000, List.fill(1000000)(1)) shouldBe 
       List.fill(1000000)(1)
+  }
+
+  it should "extract a lot of random elements from a big list" in {
     randomSelect(999, List.fill(1000)(1)) shouldBe 
       List.fill(999)(1)
   }
