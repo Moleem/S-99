@@ -20,7 +20,6 @@ object P23Spec {
 
     val elemSize = elems.size
     if (n < 0 || n > elemSize) throw new IllegalArgumentException
-    else if (n == elemSize) elems
     else randomSelectRecursive(n, elemSize, elems)
   }
 }
@@ -51,13 +50,6 @@ class P23Spec extends PxxSpec {
     randomSelect(0, List(1, 2, 3)) shouldBe List.empty
   }
 
-  it should "return an original list if result size equals list size" in {
-    randomSelect(0, List.empty) shouldBe List.empty
-    randomSelect(1, List(1)) shouldBe List(1)
-    randomSelect(2, List(1, 2)) shouldBe List(1, 2)
-    randomSelect(3, List(1, 2, 3)) shouldBe List(1, 2, 3)
-  }
-
   it should "throw an exception if result size is negative" in {
     an[IllegalArgumentException] should be thrownBy randomSelect(-1, List.empty)
     an[IllegalArgumentException] should be thrownBy randomSelect(-1, List(1))
@@ -74,8 +66,6 @@ class P23Spec extends PxxSpec {
 
   it should "extract random elements from a huge list" in {
     randomSelect(1, List.fill(1000000)(1))
-    randomSelect(1000000, List.fill(1000000)(1)) shouldBe 
-      List.fill(1000000)(1)
   }
 
   it should "extract a lot of random elements from a big list" in {
