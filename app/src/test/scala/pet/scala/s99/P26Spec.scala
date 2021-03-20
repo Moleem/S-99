@@ -1,44 +1,5 @@
 package pet.scala.s99
 
-/*
- k ; elemsize ; result
- 0 ; 0        ; empty
- 0 ; 1        ; empty
- 0 ; n        ; empty
- =============
- 1 ; 0        ; not possible
- 2 ; 0        ; not possible
- 2 ; 1        ; not possible
- 3 ; 0        ; not possible
- 3 ; 1        ; not possible
- 3 ; 2        ; not possible
- k ; <k       ; not possible
- =============
- 1 ; 1        ; List(List(onlyelem))
- 2 ; 2        ; List(List(onlyPair))
- 3 ; 3        ; List(List(onlyTriplet))
- =============
- 1 ; n        ; List(List(1stElem), List(2ndElem) ... List(nthElem))
- =============
- 2 ; n        ; List(
-                  List(1stElem+c(1, restAfter1st)), 
-                  List(2ndElem+c(1, restAfter2nd)), 
-                  ...,
-                  List(n-2thElem+c(1, restAfterN-2nd)), 
-                  List(n-1thElem, nthElem))
- 3 ; n        ; List(
-                  List(1stElem+c(2, restAfter1st)),
-                  List(2ndElem+c(2, restAfter2nd)),
-                  List(3rdElem+c(2, restAfter3rd)),
-                  ...,
-                  List(n-3rdElem+c(2, restAfterN-3rd)),
-                  List(n-2ndElem, n-1stElem, nthElem)
-                )
- 
-*/
-
-
-
 class P26Spec extends PxxSpec { 
   private def combinations[T](k: Int, elems: List[T]): List[List[T]] = {
     val elemsSize = elems.size
