@@ -19,17 +19,12 @@ class P47Spec extends PxxSpec {
     true  or true  shouldBe true
   }
   
-  // "'NOT' operator" should "implement logical NOT" in {
-  //   NOT(false) shouldBe true
-  //   NOT(true)  shouldBe false
-  // }
-  
-  // "'NAND' operator" should "implement logical NAND" in {
-  //   NAND(false, false) shouldBe true
-  //   NAND(false, true)  shouldBe true
-  //   NAND(true,  false) shouldBe true
-  //   NAND(true,  true)  shouldBe false
-  // }
+  "'nand' operator" should "implement logical NAND" in {
+    false nand false shouldBe true
+    false nand true  shouldBe true
+    true  nand false shouldBe true
+    true  nand true  shouldBe false
+  }
   
   // "'NOR' operator" should "implement logical NOR" in {
   //   Nfalse or false shouldBe true
