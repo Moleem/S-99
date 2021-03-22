@@ -12,12 +12,12 @@ class P47Spec extends PxxSpec {
     true  and true  shouldBe true
   }
   
-  // "'OR' operator" should "implement logical OR" in {
-  //   OR(false, false) shouldBe false
-  //   OR(false, true)  shouldBe true
-  //   OR(true,  false) shouldBe true
-  //   OR(true,  true)  shouldBe true
-  // }
+  "'or' operator" should "implement logical OR" in {
+    false or false shouldBe false
+    false or true  shouldBe true
+    true  or false shouldBe true
+    true  or true  shouldBe true
+  }
   
   // "'NOT' operator" should "implement logical NOT" in {
   //   NOT(false) shouldBe true
@@ -32,17 +32,17 @@ class P47Spec extends PxxSpec {
   // }
   
   // "'NOR' operator" should "implement logical NOR" in {
-  //   NOR(false, false) shouldBe true
-  //   NOR(false, true)  shouldBe false
-  //   NOR(true,  false) shouldBe false
-  //   NOR(true,  true)  shouldBe false
+  //   Nfalse or false shouldBe true
+  //   Nfalse or true  shouldBe false
+  //   Ntrue or  false shouldBe false
+  //   Ntrue or  true  shouldBe false
   // }
   
   // "'XOR' operator" should "implement logical XOR" in {
-  //   XOR(false, false) shouldBe false
-  //   XOR(false, true)  shouldBe true
-  //   XOR(true,  false) shouldBe true
-  //   XOR(true,  true)  shouldBe false
+  //   Xfalse or false shouldBe false
+  //   Xfalse or true  shouldBe true
+  //   Xtrue or  false shouldBe true
+  //   Xtrue or  true  shouldBe false
   // }
   
   // "'IMPL' operator" should "implement logical IMPL" in {

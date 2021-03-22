@@ -2,8 +2,9 @@ package pet.scala.s99.logic
 
 class S99Logic(a: Boolean) {
   import S99Logic._
-  
+
   def and(b: Boolean): Boolean = AND(a, b)
+  def or(b: Boolean): Boolean = OR(a, b)
 }
 
 object S99Logic {
