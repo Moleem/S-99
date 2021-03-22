@@ -33,12 +33,12 @@ class P47Spec extends PxxSpec {
     true  nor true  shouldBe false
   }
   
-  // "'XOR' operator" should "implement logical XOR" in {
-  //   Xfalse or false shouldBe false
-  //   Xfalse or true  shouldBe true
-  //   Xtrue or  false shouldBe true
-  //   Xtrue or  true  shouldBe false
-  // }
+  "'XOR' operator" should "implement logical XOR" in {
+    false xor false shouldBe false
+    false xor true  shouldBe true
+    true  xor false shouldBe true
+    true  xor true  shouldBe false
+  }
   
   // "'IMPL' operator" should "implement logical IMPL" in {
   //   IMPL(false, false) shouldBe true
