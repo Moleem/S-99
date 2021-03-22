@@ -9,6 +9,7 @@ class S99Logic(a: Boolean) {
   def nor(b: Boolean): Boolean = NOR(a, b)
   def xor(b: Boolean): Boolean = XOR(a, b)
   def impl(b: Boolean): Boolean = IMPL(a, b)
+  def equ(b: Boolean): Boolean = EQU(a, b)
 }
 
 object S99Logic {

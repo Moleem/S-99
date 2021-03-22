@@ -40,17 +40,17 @@ class P47Spec extends PxxSpec {
     true  xor true  shouldBe false
   }
   
-  // "'IMPL' operator" should "implement logical IMPL" in {
-  //   IMPL(false, false) shouldBe true
-  //   IMPL(false, true)  shouldBe true
-  //   IMPL(true,  false) shouldBe false
-  //   IMPL(true,  true)  shouldBe true
-  // }
+  "'impl' operator" should "implement logical IMPL" in {
+    false impl false shouldBe true
+    false impl true  shouldBe true
+    true  impl false shouldBe false
+    true  impl true  shouldBe true
+  }
   
-  // "'EQU' operator" should "implement logical EQU" in {
-  //   EQU(false, false) shouldBe true
-  //   EQU(false, true)  shouldBe false
-  //   EQU(true,  false) shouldBe false
-  //   EQU(true,  true)  shouldBe true
-  // }
+  "'equ' operator" should "implement logical EQU" in {
+    false equ false shouldBe true
+    false equ true  shouldBe false
+    true  equ false shouldBe false
+    true  equ true  shouldBe true
+  }
 }
