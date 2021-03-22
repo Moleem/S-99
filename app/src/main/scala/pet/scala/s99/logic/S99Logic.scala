@@ -8,6 +8,7 @@ class S99Logic(a: Boolean) {
   def nand(b: Boolean): Boolean = NAND(a, b)
   def nor(b: Boolean): Boolean = NOR(a, b)
   def xor(b: Boolean): Boolean = XOR(a, b)
+  def impl(b: Boolean): Boolean = IMPL(a, b)
 }
 
 object S99Logic {
