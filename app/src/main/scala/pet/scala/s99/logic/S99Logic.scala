@@ -1,11 +1,20 @@
 package pet.scala.s99.logic
 
+class S99Logic(a: Boolean) {
+  import S99Logic._
+  
+  def and(b: Boolean): Boolean = AND(a, b)
+}
+
 object S99Logic {
+  implicit def enrichBoolean(a: Boolean): S99Logic =
+    new S99Logic(a)
+
   def AND(a: Boolean, b: Boolean): Boolean =
     (a, b) match {
       case (true,  true)  => true
       case _ => false
-    }
+    }  
 
   def OR(a: Boolean, b: Boolean): Boolean =
     (a, b) match {
