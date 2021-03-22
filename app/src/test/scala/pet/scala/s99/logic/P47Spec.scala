@@ -26,12 +26,12 @@ class P47Spec extends PxxSpec {
     true  nand true  shouldBe false
   }
   
-  // "'NOR' operator" should "implement logical NOR" in {
-  //   Nfalse or false shouldBe true
-  //   Nfalse or true  shouldBe false
-  //   Ntrue or  false shouldBe false
-  //   Ntrue or  true  shouldBe false
-  // }
+  "'nor' operator" should "implement logical NOR" in {
+    false nor false shouldBe true
+    false nor true  shouldBe false
+    true  nor false shouldBe false
+    true  nor true  shouldBe false
+  }
   
   // "'XOR' operator" should "implement logical XOR" in {
   //   Xfalse or false shouldBe false

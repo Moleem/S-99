@@ -6,6 +6,7 @@ class S99Logic(a: Boolean) {
   def and(b: Boolean): Boolean = AND(a, b)
   def or(b: Boolean): Boolean = OR(a, b)
   def nand(b: Boolean): Boolean = NAND(a, b)
+  def nor(b: Boolean): Boolean = NOR(a, b)
 }
 
 object S99Logic {
