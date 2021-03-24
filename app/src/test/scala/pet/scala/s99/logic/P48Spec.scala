@@ -9,8 +9,8 @@ class P48Spec extends PxxSpec {
     else if (n == 1) List("0", "1")
     else {
       val previous = gray(n-1)
-      val newStartWith1 = previous.map(elem => "1" + elem)
-      val newStartWith0 = previous.map(elem => "0" + elem)
+      val newStartWith0 = previous.map("0" + _)
+      val newStartWith1 = previous.reverse.map("1" + _)
       
       newStartWith0 ::: newStartWith1
     }
@@ -23,11 +23,11 @@ class P48Spec extends PxxSpec {
   }
 
   it should "generate gray codes of size 2 in order" in {
-    gray(2) shouldBe List("00", "01", "10", "11")
+    gray(2) shouldBe List("00", "01", "11", "10")
   }
 
   it should "generate gray codes of size N in order" in {
-    gray(3) shouldBe List("000", "001", "010", "011", "100", "101", "110", "111")
+    gray(3) shouldBe List("000", "001", "011", "010", "110", "111", "101", "100")
   }
 
   it should "return an empty list if requested size is 0" in {
