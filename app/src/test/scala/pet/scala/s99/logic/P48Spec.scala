@@ -40,9 +40,9 @@ class P48Spec extends PxxSpec {
     an[IllegalArgumentException] should be thrownBy gray(-3)
   }
 
-  // it should "generate huge lists" in {
-  //   import scala.math.pow
-
-  //   gray(10).size shouldBe pow(2, 10)
-  // }
+  it should "generate huge lists" in {
+    import scala.math.pow
+    // the resulting list should have 2^20 = 1,048,576 elements
+    gray(20).size shouldBe pow(2, 20)
+  }
 }
