@@ -37,9 +37,6 @@ class P31Spec extends PxxSpec {
     1.isPrime shouldBe false
     4.isPrime shouldBe false
     6.isPrime shouldBe false
-    8.isPrime shouldBe false
-    9.isPrime shouldBe false
-    10.isPrime shouldBe false
   }
 
   it should "identify big non-prime numbers" in {
