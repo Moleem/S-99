@@ -2,10 +2,14 @@ package pet.scala.s99.arithmetic
 
 import pet.scala.s99.PxxSpec
 
-class P32Spec extends PxxSpec {
-  private def gcd(a: Int, b: Int): Int =
+object P32Spec {
+  def gcd(a: Int, b: Int): Int =
     if (b == 0) a
     else gcd(b, a % b)
+}
+
+class P32Spec extends PxxSpec {
+  import P32Spec.gcd
   
   behavior of "'gcd' method"
 
