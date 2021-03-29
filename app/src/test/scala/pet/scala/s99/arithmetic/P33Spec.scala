@@ -3,6 +3,13 @@ package pet.scala.s99.arithmetic
 import pet.scala.s99.PxxSpec
 
 class P33Spec extends PxxSpec {
+  import P32Spec.gcd
+
+  implicit class IntWithCoPrime(num: Int) {
+    def isCoprimeTo(other: Int): Boolean =
+      if (num < 0 || other < 0) throw new IllegalArgumentException
+      else gcd(num, other) == 1
+  }
 
   behavior of "'coprime' method"
 
@@ -20,9 +27,9 @@ class P33Spec extends PxxSpec {
   }
 
   it should "throw an exception on negative inputs" in {
-    an[IllegalArgumentException] should be trhownBy -2 isCoprimeTo 4
-    an[IllegalArgumentException] should be trhownBy 2 isCoprimeTo -4
-    an[IllegalArgumentException] should be trhownBy -2 isCoprimeTo -4
+    an[IllegalArgumentException] should be thrownBy (-2 isCoprimeTo 4)
+    an[IllegalArgumentException] should be thrownBy (2 isCoprimeTo -4)
+    an[IllegalArgumentException] should be thrownBy (-2 isCoprimeTo -4)
   }
 
   it should "determine whether two large integers are coprime" in {
