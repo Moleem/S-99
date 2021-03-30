@@ -2,7 +2,7 @@ package pet.scala.s99.arithmetic
 
 import pet.scala.s99.PxxSpec
 
-class P33Spec extends PxxSpec {
+object P33Spec {
   import P32Spec.gcd
 
   implicit class IntWithCoPrime(num: Int) {
@@ -10,6 +10,9 @@ class P33Spec extends PxxSpec {
       if (num < 0 || other < 0) throw new IllegalArgumentException
       else gcd(num, other) == 1
   }
+}
+class P33Spec extends PxxSpec {
+  import P33Spec.IntWithCoPrime  
 
   behavior of "'coprime' method"
 
