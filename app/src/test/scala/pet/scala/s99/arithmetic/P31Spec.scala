@@ -2,14 +2,18 @@ package pet.scala.s99.arithmetic
 
 import pet.scala.s99.PxxSpec
 
-class P31Spec extends PxxSpec {
+object P31Spec {
   implicit class IntWithPrime(num: Int) {
     def isPrime: Boolean =
       num > 1 &&
       primes.takeWhile(_ <= Math.sqrt(num)).forall(num % _ != 0)
 
-    private val primes = 2 #:: LazyList.from(3, 2).filter(_.isPrime)
+    val primes = 2 #:: LazyList.from(3, 2).filter(_.isPrime)
   }
+}
+
+class P31Spec extends PxxSpec {
+  import P31Spec.IntWithPrime
 
   behavior of "'isPrime' method"
 
