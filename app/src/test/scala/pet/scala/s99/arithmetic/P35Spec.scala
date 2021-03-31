@@ -1,5 +1,6 @@
 package pet.scala.s99.arithmetic
 
+import scala.annotation.tailrec
 import pet.scala.s99.PxxSpec
 
 class P35Spec extends PxxSpec {
@@ -7,26 +8,20 @@ class P35Spec extends PxxSpec {
 
   implicit class IntWithPrimeFactors(num: Int) {
     def primeFactors: List[Int] = {
+      @tailrec
       def primeFactorsRecursive(
         n: Int, primes: LazyList[Int]=primes, factors: List[Int] = Nil
       ): List[Int] = {
         if (n == 1) factors
-        else {
-          val nextPrime = primes.head
-          val remainder = n % nextPrime
-          val divident = n / nextPrime
-          if (remainder == 0) 
-            primeFactorsRecursive(divident, primes, nextPrime :: factors)
-          else 
-            primeFactorsRecursive(n, primes.tail, factors)
-        }
+        else if (n % primes.head == 0)
+          primeFactorsRecursive(n / primes.head, primes, primes.head :: factors)
+        else 
+          primeFactorsRecursive(n, primes.tail, factors)
       }
 
       if (num < 1) throw new IllegalArgumentException
       else if (num == 1) List(1)
-      else {
-        primeFactorsRecursive(num).reverse
-      }
+      else primeFactorsRecursive(num).reverse
     }
 
   }
