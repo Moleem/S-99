@@ -3,12 +3,12 @@ package pet.scala.s99.arithmetic
 import pet.scala.s99.PxxSpec
 
 object P31Spec {
+  val primes = 2 #:: LazyList.from(3, 2).filter(_.isPrime)
+
   implicit class IntWithPrime(num: Int) {
     def isPrime: Boolean =
       num > 1 &&
       primes.takeWhile(_ <= Math.sqrt(num)).forall(num % _ != 0)
-
-    val primes = 2 #:: LazyList.from(3, 2).filter(_.isPrime)
   }
 }
 
