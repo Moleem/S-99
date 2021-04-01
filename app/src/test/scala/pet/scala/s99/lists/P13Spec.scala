@@ -2,15 +2,18 @@ package pet.scala.s99.lists
 
 import pet.scala.s99.PxxSpec
 
-class P13Spec extends PxxSpec {
-
-  private def encodeDirect[T](elems: List[T]): List[(Int, T)] =
+object P13Spec {
+  def encodeDirect[T](elems: List[T]): List[(Int, T)] =
     elems.foldRight(List[(Int, T)]()) { 
       case (currentElem, (elemCounter, elem) :: tail) if currentElem == elem =>
         (elemCounter + 1, elem) :: tail
       case (currentElem, accumulator) =>
         (1, currentElem) :: accumulator
     }
+}
+
+class P13Spec extends PxxSpec {
+  import P13Spec.encodeDirect
 
   behavior of "'encodeDirect' method"
 
