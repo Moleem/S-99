@@ -3,7 +3,7 @@ package pet.scala.s99.arithmetic
 import scala.annotation.tailrec
 import pet.scala.s99.PxxSpec
 
-class P35Spec extends PxxSpec {
+object P35Spec {
   import P31Spec.primes
 
   implicit class IntWithPrimeFactors(num: Int) {
@@ -23,9 +23,10 @@ class P35Spec extends PxxSpec {
       else if (num == 1) List(1)
       else primeFactorsRecursive(num).reverse
     }
-
   }
-
+}
+class P35Spec extends PxxSpec {
+  import P35Spec.IntWithPrimeFactors
 
   behavior of "'primeFactors' mehod"
 
